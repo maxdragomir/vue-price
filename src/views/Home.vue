@@ -23,19 +23,19 @@
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
-                    <p class="title">3,456</p>
+                    <p class="title">{{ stats.products }}</p>
                     <p class="heading">Products</p>
                   </div>
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
-                    <p class="title">123</p>
+                    <p class="title">{{ stats.categories }}</p>
                     <p class="heading">Categories</p>
                   </div>
                 </div>
                 <div class="level-item has-text-centered">
                   <div>
-                    <p class="title">456K</p>
+                    <p class="title">{{ stats.shops }}</p>
                     <p class="heading">Shops</p>
                   </div>
                 </div>
@@ -76,10 +76,25 @@
 </template>
 
 <script>
+  import gql from 'graphql-tag'
+
+  const getStatsQuery = gql`query{
+    stats{
+      products
+      categories
+      shops
+    }
+  }`
+
 export default {
     name: 'home',
     data() {
         return {
+            stats: {
+                products: 0,
+                categories: 0,
+                shops: 0
+            },
             data: [
                 'Angular',
                 'Angular 2',
@@ -97,6 +112,9 @@ export default {
             name: '',
             selected: null
         }
+    },
+    apollo: {
+      stats: getStatsQuery
     },
     computed: {
         filteredDataArray() {
