@@ -72,6 +72,16 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+
+
+        </div>
+
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -84,7 +94,24 @@
       categories
       shops
     }
-  }`
+  }`;
+
+  const latestProducts = gql`query{
+    products(count: 5, orderBy: updated, orderDirection: asc){
+      id
+      name
+      categoryId
+      description
+      barcodes
+      photos
+      prices {
+        price
+        measure
+      }
+      added(format: long)
+      updated(format: long)
+    }
+  }`;
 
 export default {
     name: 'home',
@@ -95,6 +122,7 @@ export default {
                 categories: 0,
                 shops: 0
             },
+            latestProducts: [],
             data: [
                 'Angular',
                 'Angular 2',
@@ -114,7 +142,8 @@ export default {
         }
     },
     apollo: {
-      stats: getStatsQuery
+        stats: getStatsQuery,
+        latestProducts: latestProducts
     },
     computed: {
         filteredDataArray() {
