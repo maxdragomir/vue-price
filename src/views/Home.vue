@@ -75,7 +75,32 @@
     <section class="section">
       <div class="container">
         <div class="columns">
+            <div class="column" v-for="product in products">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img :src="product.mainPhoto" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-size-6">{{ product.name }}</p>
+                                <p class="subtitle is-size-7">
+                                    {{ product.prices }}
+                                </p>
+                            </div>
+                        </div>
 
+                        <div class="content">
+                            {{ product.description }}
+                            <br>
+                            <div class="is-size-7"> Добавлен: {{ product.added.split(',')[0] }}</div>
+                            <div class="is-size-7 has-text-grey"> Обновлен: {{ product.updated.split(',')[0] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -104,6 +129,7 @@
       description
       barcodes
       photos
+      mainPhoto
       prices {
         price
         measure
@@ -122,7 +148,7 @@ export default {
                 categories: 0,
                 shops: 0
             },
-            latestProducts: [],
+            products: [],
             data: [
                 'Angular',
                 'Angular 2',
@@ -143,7 +169,7 @@ export default {
     },
     apollo: {
         stats: getStatsQuery,
-        latestProducts: latestProducts
+        products: latestProducts
     },
     computed: {
         filteredDataArray() {
