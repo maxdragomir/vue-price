@@ -87,7 +87,7 @@
                             <div class="media-content">
                                 <p class="title is-size-6">{{ product.name }}</p>
                                 <p class="subtitle is-size-7">
-                                    {{ product.pricesDiapason }}
+                                    {{ product.prices | toPriceRange }}
                                 </p>
                             </div>
                         </div>
@@ -130,7 +130,10 @@
       barcodes
       photos
       mainPhoto
-      pricesDiapason
+      prices {
+        price
+        measure
+      }
       added(format: long)
       updated(format: long)
     }
@@ -138,6 +141,33 @@
 
 export default {
     name: 'home',
+    filters: {
+        toPriceRange: function (value) {
+            let minPrice,
+                maxPrice,
+                measure = value[0].measure ? value[0].measure : 1 + ' unit';
+
+            if (value.length === 1) {
+                return value[0].price + ' uah \\ ' + measure;
+            }
+
+            value.forEach(function(val) {
+                if (minPrice === undefined || val.price <= minPrice) {
+                    minPrice = val.price;
+                }
+
+                if (maxPrice === undefined || val.price >= maxPrice) {
+                    maxPrice = val.price;
+                }
+            });
+
+            if (minPrice === maxPrice) {
+                return minPrice + ' uah \\ ' + measure;
+            }
+
+            return minPrice + ' - ' + maxPrice + ' uah \\ ' + measure;
+        }
+    },
     data() {
         return {
             stats: {
