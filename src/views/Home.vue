@@ -75,7 +75,7 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-            <div class="column" v-for="product in products">
+            <div class="column" v-for="product in latestProducts" :key="product.id">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
@@ -87,7 +87,7 @@
                             <div class="media-content">
                                 <p class="title is-size-6">{{ product.name }}</p>
                                 <p class="subtitle is-size-7">
-                                    {{ product.prices }}
+                                    {{ product.pricesDiapason }}
                                 </p>
                             </div>
                         </div>
@@ -130,10 +130,7 @@
       barcodes
       photos
       mainPhoto
-      prices {
-        price
-        measure
-      }
+      pricesDiapason
       added(format: long)
       updated(format: long)
     }
@@ -148,7 +145,7 @@ export default {
                 categories: 0,
                 shops: 0
             },
-            products: [],
+            latestProducts: [],
             data: [
                 'Angular',
                 'Angular 2',
@@ -169,7 +166,12 @@ export default {
     },
     apollo: {
         stats: getStatsQuery,
-        products: latestProducts
+        latestProducts: {
+            query: latestProducts,
+            update (data) {
+                return data.products;
+            }
+        }
     },
     computed: {
         filteredDataArray() {
