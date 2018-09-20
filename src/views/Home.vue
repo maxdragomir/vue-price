@@ -82,7 +82,9 @@
                             <img :src="product.mainPhoto" alt="Placeholder image">
                         </figure>
                     </div>
+
                     <div class="card-content">
+
                         <div class="media">
                             <div class="media-content">
                                 <p class="title is-size-6">{{ product.name }}</p>
@@ -94,10 +96,10 @@
 
                         <div class="content">
                             {{ product.description }}
-                            <br>
                             <div class="is-size-7"> Добавлен: {{ product.added.split(',')[0] }}</div>
                             <div class="is-size-7 has-text-grey"> Обновлен: {{ product.updated.split(',')[0] }}</div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -137,6 +139,15 @@
       added(format: long)
       updated(format: long)
     }
+  }`;
+
+  const searchProducts = gql`query{
+    getSearch($query: String) {
+        productsSearch(query: $query) {
+            name
+            barcodes
+        }
+   }
   }`;
 
 export default {
@@ -201,7 +212,8 @@ export default {
             update (data) {
                 return data.products;
             }
-        }
+        },
+        searchProducts: searchProducts
     },
     computed: {
         filteredDataArray() {
