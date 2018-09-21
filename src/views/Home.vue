@@ -57,18 +57,7 @@
         <div class="columns">
           <div class="column is-half-desktop is-offset-one-quarter-desktop">
             <b-field class="has-v-margin-1">
-              <!--<b-autocomplete-->
-                      <!--rounded-->
-                      <!--v-model="name"-->
-                      <!--:data="searchProducts"-->
-                      <!--placeholder="e.g. jQuery"-->
-                      <!--size="is-medium"-->
-                      <!--icon="search">-->
-                <!--<template slot="empty">No results found</template>-->
-              <!--</b-autocomplete>-->
-
-                <input class="input is-medium is-rounded" v-model="searchProducts" placeholder="Products or Barcodes">
-
+              <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
             </b-field>
           </div>
         </div>
@@ -77,46 +66,29 @@
 
     <section class="section">
       <div class="container">
-        <div class="columns">
-            <div class="column" v-for="product in latestProducts" :key="product.id">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img :src="product.mainPhoto" alt="Placeholder image">
-                        </figure>
-                    </div>
-
-                    <div class="card-content">
-
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-size-6">{{ product.name }}</p>
-                                <p class="subtitle is-size-7">
-                                    {{ product.prices | toPriceRange }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            {{ product.description }}
-                            <div class="is-size-7"> Добавлен: {{ product.added.split(',')[0] }}</div>
-                            <div class="is-size-7 has-text-grey"> Обновлен: {{ product.updated.split(',')[0] }}</div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+          <section class="searchResults" v-if="isSearchUsed">
+              <h2>We've found this products:</h2>
+              <div class="columns">
+                  <div class="column" v-for="product in searchResults" :key="product.id">
+                      <ProductCard v-bind:product="product" />
+                  </div>
+              </div>
+          </section>
+          <section class="latestProducts" v-else>
+              <div class="columns">
+                  <div class="column" v-for="product in latestProducts" :key="product.id">
+                      <ProductCard v-bind:product="product" />
+                  </div>
+              </div>
+          </section>
       </div>
     </section>
-
   </div>
 </template>
 
 <script>
   import gql from 'graphql-tag'
+  import ProductCard from "../components/ProductCard";
 
   const getStatsQuery = gql`query{
     stats{
@@ -146,40 +118,25 @@
 
   const search = gql`query getSearch($query: String) {
     productsSearch(query: $query) {
-        name
-        barcodes
+      id
+      name
+      categoryId
+      description
+      barcodes
+      photos
+      mainPhoto
+      prices {
+        price
+        measure
+      }
+      added(format: long)
+      updated(format: long)
     }
   }`;
 
 export default {
     name: 'home',
-    filters: {
-        toPriceRange: function (value) {
-            let minPrice,
-                maxPrice,
-                measure = value[0].measure ? value[0].measure : 1 + ' unit';
-
-            if (value.length === 1) {
-                return value[0].price + ' uah \\ ' + measure;
-            }
-
-            value.forEach(function(val) {
-                if (minPrice === undefined || val.price <= minPrice) {
-                    minPrice = val.price;
-                }
-
-                if (maxPrice === undefined || val.price >= maxPrice) {
-                    maxPrice = val.price;
-                }
-            });
-
-            if (minPrice === maxPrice) {
-                return minPrice + ' uah \\ ' + measure;
-            }
-
-            return minPrice + ' - ' + maxPrice + ' uah \\ ' + measure;
-        }
-    },
+    components: {ProductCard},
     data() {
         return {
             stats: {
@@ -188,34 +145,34 @@ export default {
                 shops: 0
             },
             latestProducts: [],
-            searchProducts: '',
+            searchResults: [],
+            searchQuery: '',
         }
-    },
-    props: {
-        searchQuery: String
     },
     apollo: {
         stats: getStatsQuery,
         latestProducts: {
             query: latestProducts,
             update (data) {
-                return data.products;
+              return data.products;
             }
         },
-        searchProducts: {
+        searchResults: {
             query: search,
             variables() {
-                return {
-                    query: this.searchQuery
-                }
+              return {
+                query: this.searchQuery
+              }
+            },
+            update (data) {
+              return data.productsSearch;
             }
         }
     },
-    methods: {
-
-    },
     computed: {
-
+      isSearchUsed () {
+          return this.searchQuery.length;
+      }
     }
 }
 </script>
