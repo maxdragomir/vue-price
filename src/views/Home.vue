@@ -57,15 +57,18 @@
         <div class="columns">
           <div class="column is-half-desktop is-offset-one-quarter-desktop">
             <b-field class="has-v-margin-1">
-              <b-autocomplete
-                      rounded
-                      v-model="name"
-                      :data="filteredDataArray"
-                      placeholder="e.g. jQuery"
-                      size="is-medium"
-                      icon="search">
-                <template slot="empty">No results found</template>
-              </b-autocomplete>
+              <!--<b-autocomplete-->
+                      <!--rounded-->
+                      <!--v-model="name"-->
+                      <!--:data="searchProducts"-->
+                      <!--placeholder="e.g. jQuery"-->
+                      <!--size="is-medium"-->
+                      <!--icon="search">-->
+                <!--<template slot="empty">No results found</template>-->
+              <!--</b-autocomplete>-->
+
+                <input class="input is-medium is-rounded" v-model="searchProducts" placeholder="Products or Barcodes">
+
             </b-field>
           </div>
         </div>
@@ -141,13 +144,11 @@
     }
   }`;
 
-  const searchProducts = gql`query{
-    getSearch($query: String) {
-        productsSearch(query: $query) {
-            name
-            barcodes
-        }
-   }
+  const search = gql`query getSearch($query: String) {
+    productsSearch(query: $query) {
+        name
+        barcodes
+    }
   }`;
 
 export default {
@@ -187,23 +188,11 @@ export default {
                 shops: 0
             },
             latestProducts: [],
-            data: [
-                'Angular',
-                'Angular 2',
-                'Aurelia',
-                'Backbone',
-                'Ember',
-                'jQuery',
-                'Meteor',
-                'Node.js',
-                'Polymer',
-                'React',
-                'RxJS',
-                'Vue.js'
-            ],
-            name: '',
-            selected: null
+            searchProducts: '',
         }
+    },
+    props: {
+        searchQuery: String
     },
     apollo: {
         stats: getStatsQuery,
@@ -213,17 +202,20 @@ export default {
                 return data.products;
             }
         },
-        searchProducts: searchProducts
+        searchProducts: {
+            query: search,
+            variables() {
+                return {
+                    query: this.searchQuery
+                }
+            }
+        }
+    },
+    methods: {
+
     },
     computed: {
-        filteredDataArray() {
-            return this.data.filter((option) => {
-                return option
-                    .toString()
-                    .toLowerCase()
-                    .indexOf(this.name.toLowerCase()) >= 0
-            })
-        }
+
     }
 }
 </script>
