@@ -1,30 +1,36 @@
 <template>
-    <div class="card">
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <img :src="product.mainPhoto" alt="Placeholder image">
-            </figure>
+
+    <div class="card is-products">
+        <div class="card-header">
+            <a href="#!" class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
+            <div class="card-price">
+                {{ product.prices | toPriceRange }}
+            </div>
         </div>
-
-        <div class="card-content">
-
-            <div class="media">
-                <div class="media-content">
-                    <p class="title is-size-6">{{ product.name }}</p>
-                    <p class="subtitle is-size-7">
-                        {{ product.prices | toPriceRange }}
-                    </p>
-                </div>
+        <div class="card-body">
+            <a href="#!">
+                <div class="card-title" :title="product.name"> {{ product.name }} </div>
+            </a>
+            <div class="card-description">
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, tempora.</p>-->
+                <p>{{ product.description }}</p>
             </div>
-
-            <div class="content">
-                {{ product.description }}
-                <div class="is-size-7"> Добавлен: {{ product.added.split(',')[0] }}</div>
-                <div class="is-size-7 has-text-grey"> Обновлен: {{ product.updated.split(',')[0] }}</div>
+            <div class="card-update">
+                <div> Add: {{ product.added.split(',')[0] }}</div>
+                <div> Update: {{ product.updated.split(',')[0] }}</div>
             </div>
-
+        </div>
+        <div class="card-footer is-flex">
+            <a class="button is-info is-custom is-outlined" href="#!">
+                <span class="icon is-small">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>More info</span>
+            </a>
         </div>
     </div>
+
+
 </template>
 
 <script>

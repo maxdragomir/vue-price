@@ -17,6 +17,7 @@
     "buefy": "^0.6.7",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
+    "material-icons": "^0.2.3",
     "vue": "^2.5.17",
     "vue-apollo": "^3.0.0-beta.25",
     "vue-router": "^3.0.1"
@@ -25,6 +26,8 @@
     "@vue/cli-plugin-babel": "^3.0.3",
     "@vue/cli-plugin-eslint": "^3.0.3",
     "@vue/cli-service": "^3.0.3",
+    "bulma": "^0.7.1",
+    "node-sass": "^4.9.3",
     "vue-template-compiler": "^2.5.17"
   }
 }
