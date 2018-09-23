@@ -4,7 +4,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <router-link active-class="is-active" class="navbar-item is-logo" to="/">
-                    LOGO
+                    PriceComparer
                 </router-link>
                 <div class="navbar-burger burger" data-target="main-nav">
                     <span></span>
@@ -14,9 +14,6 @@
             </div>
 
             <div id="main-nav" class="navbar-menu">
-                <!--<div class="navbar-start">-->
-                   <!---->
-                <!--</div>-->
 
                 <div class="navbar-end">
                     <router-link active-class="is-active" class="navbar-item" to="/">

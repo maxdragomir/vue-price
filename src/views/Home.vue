@@ -3,49 +3,54 @@
     <section class="hero is-medium has-text-centered is-header">
       <div class="hero-body">
           <div class="container">
+              <div class="svg">
+                  <img src="../assets/img/market.svg" alt="">
+              </div>
               <h1 class="title">Price Comparer</h1>
               <h2 class="subtitle">Here you can compare price for products in some shops</h2>
           </div>
-          <div class="is-home-numbers">
-              <div class="columns">
-                  <div class="column is-three-fifths-desktop is-offset-one-fifth-desktop">
-                      <nav class="level">
-                          <div class="level-item has-text-centered">
-                              <div>
-                                  <p class="title">{{ stats.products }}</p>
-                                  <p class="heading">Products</p>
-                              </div>
-                          </div>
-                          <div class="level-item has-text-centered">
-                              <div>
-                                  <p class="title">{{ stats.categories }}</p>
-                                  <p class="heading">Categories</p>
-                              </div>
-                          </div>
-                          <div class="level-item has-text-centered">
-                              <div>
-                                  <p class="title">{{ stats.shops }}</p>
-                                  <p class="heading">Shops</p>
-                              </div>
-                          </div>
-                      </nav>
-                  </div>
-              </div>
-          </div>
       </div>
-        <div class="is-shops">
+        <div class="is-home-numbers">
             <div class="container" >
                 <div class="columns is-gapless">
-                    <div class="column has-text-centered">
-                        <img src="https://www.jubiwee.com/_nuxt/img/logo1.bf8f772.svg" class="logo">
-                        <img src="https://www.jubiwee.com/_nuxt/img/logo3.4f846dd.svg" class="logo">
-                        <img src="https://www.jubiwee.com/_nuxt/img/logo4.b35b5e5.svg" class="logo">
-                        <img src="https://www.jubiwee.com/_nuxt/img/logo2.4cdad12.svg" class="logo">
-                        <img src="https://www.jubiwee.com/_nuxt/img/logo5.59685d7.svg" class="logo">
+                    <div class="column is-two-thirds has-text-centered">
+                        <div class="level">
+                            <div class="level-item has-text-centered">
+                                <div><p class="title">We have:</p></div>
+                            </div>
+                            <div class="level-item has-text-centered is-products">
+                                <div>
+                                    <p class="title">{{ stats.products }}</p>
+                                    <p class="heading">Products</p>
+                                    <div class="svg">
+                                        <img src="../assets/img/shopping-bag.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="title">{{ stats.categories }}</p>
+                                    <p class="heading">Categories</p>
+                                    <div class="svg">
+                                        <img src="../assets/img/checklist.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="title">{{ stats.shops }}</p>
+                                    <p class="heading">Shops</p>
+                                    <div class="svg">
+                                        <img src="../assets/img/shop.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <p class="clients-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, quam?</p>
+            <!--<p class="clients-details">We have...</p>-->
         </div>
     </section>
       <section class="section is-try">

@@ -22,54 +22,76 @@ body {
 
 .is-logo {
   font-size: 2rem;
-  text-transform: uppercase;
   font-weight: bold; }
 
 .is-header {
-  background: #606c88;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #3f4c6b, #606c88);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  background: #afd46a;
+  background: linear-gradient(180deg, #afd46a, #6d9e42); }
   .is-header h1, .is-header h2 {
     color: #fff; }
+  .is-header .svg {
+    pointer-events: none; }
+    .is-header .svg img {
+      width: 80px;
+      height: 100%;
+      opacity: 1; }
   .is-header .level {
     color: #fff; }
     .is-header .level .title {
       color: #fff; }
+    .is-header .level .level-item {
+      position: relative; }
+    .is-header .level .is-products .svg {
+      position: absolute;
+      top: -30%; }
+    .is-header .level .svg {
+      position: absolute;
+      top: -25%;
+      left: 0;
+      right: 0;
+      pointer-events: none; }
+      .is-header .level .svg img {
+        width: 80px;
+        height: 100%;
+        opacity: .2;
+        transform: rotate(-10deg); }
 
 .is-home-numbers {
-  margin-top: 3rem; }
-
-.is-shops {
   position: relative;
+  padding: 3rem 0;
   background: rgba(255, 255, 255, 0.1); }
-  .is-shops img.logo {
-    margin-bottom: 0;
-    height: 90px; }
-  .is-shops p {
+  .is-home-numbers .clients-details {
     color: #fff;
     position: absolute;
-    top: -30px;
+    top: -50px;
     margin: 0 auto;
     left: 0;
     right: 0;
-    font-size: .8rem; }
+    font-size: 2rem; }
+  .is-home-numbers .columns {
+    justify-content: center; }
 
 .is-try .input {
   height: 50px;
   font-size: 1.5rem;
   border-radius: 25px; }
+  .is-try .input:focus {
+    border-color: #6d9e42;
+    box-shadow: 0 0 0 0.125em rgba(109, 158, 66, 0.25); }
+    .is-try .input:focus + span {
+      color: #6d9e42 !important; }
 .is-try .control.has-icons-left .icon.is-left {
   height: 50px;
   width: 3.25em; }
+.is-try .title {
+  color: #6d9e42; }
 
 .is-content h2 {
-  color: #999;
-  font-size: 2rem;
-  font-weight: 600;
-  padding-bottom: 1rem; }
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  opacity: .5; }
 
 .card {
   background-color: transparent;
@@ -126,26 +148,6 @@ body {
 .card-footer-item:not(:last-child) {
   border-right: none; }
 
-.card.media:not(:last-child) {
-  margin-bottom: 0.75rem; }
-.card.is-author {
-  max-width: 180px;
-  margin: 0 auto; }
-.card.is-author .card-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  overflow: hidden; }
-.card.is-author .card-body {
-  margin-top: 1.25rem; }
-.card.is-author .card-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: #463853; }
-
 .card.is-products {
   display: flex;
   flex-direction: column;
@@ -172,12 +174,7 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #606c88;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #3f4c6b, #606c88);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #afd46a;
   color: #fff;
   font-size: .8rem;
   padding: .3rem;
@@ -219,10 +216,29 @@ body {
   padding: 2rem 1.5rem;
   justify-content: flex-end; }
   .card.is-products .card-footer .is-custom {
-    border-color: #3f4c6b;
-    color: #3f4c6b; }
+    border-color: #e89223;
+    color: #e89223; }
     .card.is-products .card-footer .is-custom:hover {
-      background: #3f4c6b;
+      background: #e89223;
       color: #fff; }
+.card.media:not(:last-child) {
+  margin-bottom: 0.75rem; }
+.card.is-author {
+  max-width: 180px;
+  margin: 0 auto; }
+.card.is-author .card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden; }
+.card.is-author .card-body {
+  margin-top: 1.25rem; }
+.card.is-author .card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #463853; }
 
 /*# sourceMappingURL=main.css.map */
