@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-        <nav class="navbar is-transparent">
+
+    <nav class="navbar is-fixed-top is-small is-nav">
+        <div class="container">
             <div class="navbar-brand">
-                <router-link active-class="is-active" class="navbar-item" to="/">
-                    <img src="https://bulma.io/images/bulma-logo.png"
-                         alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                <router-link active-class="is-active" class="navbar-item is-logo" to="/">
+                    PriceComparer
                 </router-link>
                 <div class="navbar-burger burger" data-target="main-nav">
                     <span></span>
@@ -14,23 +14,21 @@
             </div>
 
             <div id="main-nav" class="navbar-menu">
-                <div class="navbar-start">
+
+                <div class="navbar-end">
                     <router-link active-class="is-active" class="navbar-item" to="/">
                         Home
                     </router-link>
                     <router-link active-class="is-active" class="navbar-item" to="/categories">
                         Categories
                     </router-link>
-                </div>
-
-                <div class="navbar-end">
                     <router-link active-class="is-active" class="navbar-item" to="/about">
                         About
                     </router-link>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </template>
 
 <script>
