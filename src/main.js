@@ -15,7 +15,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 Vue.config.productionTip = false
 
 const httpLink = new HttpLink({
-    uri: 'http://api.pricecomparer.tk/graphql',
+    uri: 'https://api.pricecomparer.tk/graphql',
 })
 
 // Create the apollo client
