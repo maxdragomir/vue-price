@@ -19,6 +19,7 @@ pipelines:
             - dist/**
       - step:
            name: Deploy to staging
+           image: samueldebruyn/debian-git
            deployment: staging
            script:
              - mkdir -p ~/.ssh
