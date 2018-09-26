@@ -24,5 +24,5 @@ pipelines:
            script:
              - mkdir -p ~/.ssh
              - echo $MY_SSH_KEY | base64 --decode > ~/.ssh/id_rsa
-             - chmod 0600 ~/.ssh/id_rsa-
+             - chmod 0600 ~/.ssh/id_rsa
              - scp -i ~/.ssh/id_rsa -P $SERVER_PORT -r $DIRECTORY_TRANSFER_LIST $USERNAME@$SERVER_IP_ADDRESS:/var/www/pricecomparer-vue
