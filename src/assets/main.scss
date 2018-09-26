@@ -12,6 +12,9 @@ html {
 body {
   background: #fafafa;
 }
+.navbar {
+  background: #fafafa;
+}
 #app > div {
   margin-top: 4rem;
 }
@@ -202,19 +205,19 @@ body {
     flex-direction: column;
     margin: 0 auto;
     background-color: white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
     transition-duration: 172ms;
     will-change: transform, box-shadow
   }
   &.is-products:hover, &.is-products.is-hovered, &.is-products:focus, &.is-products.is-focused, &.is-products:active, &.is-products.is-active, &.is-products .is-touched {
-    box-shadow: 0 10px 20px rgba(220, 220, 220, 0.5);
+    box-shadow: 0 10px 20px rgba(220, 220, 220, 0.8);
     transform: translateY(-4px);
-    color: inherit
+    color: inherit;
   }
   &.is-products:hover .card-image, &.is-products.is-hovered .card-image, &.is-products:focus .card-image, &.is-products.is-focused .card-image, &.is-products:active .card-image, &.is-products.is-active .card-image, &.is-products .is-touched .card-image {
-    transform: scale(1.05)
+    transform: scale(1.05);
   }
   &.is-products .card-header {
     margin: 0;
@@ -227,12 +230,33 @@ body {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: $light-green;
+    background: $orange;
 
     color: #fff;
     font-size: .8rem;
     padding: .3rem;
     border-radius: 4px;
+  }
+  .card-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+
+    .svg {
+      width: 35px;
+      height: 35px;
+      background: #fff;
+      padding: 4px;
+      border-radius: 25px;
+      box-shadow: 0 3px 5px rgba(220, 220, 220, 0.8);
+    }
+    .card-update {
+      width: 37px;
+      height: 37px;
+      margin-left: 5px;
+    }
   }
   &.is-products .card-image {
     border-radius: 10px 10px 0 0;
@@ -252,9 +276,10 @@ body {
   }
 
   &.is-products .card-body {
+    position: relative;
     -ms-flex: 1;
     flex: 1;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1.5rem;
   }
   &.is-products .card-title {
     color: #463853;
@@ -281,12 +306,13 @@ body {
     padding: 2rem 1.5rem;
     justify-content: flex-end;
 
+
     .is-custom {
       border-color: $orange;
       color: $orange;
 
-      &:hover {
-        background: $orange;
+      &:hover, &:focus {
+        background-color: $orange;
         color: #fff;
       }
     }

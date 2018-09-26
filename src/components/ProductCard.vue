@@ -6,6 +6,10 @@
             <div class="card-price">
                 {{ product.prices | toPriceRange }}
             </div>
+            <div class="card-info">
+                <img class="svg card-add" :title="'Add: ' + product.added.split(',')[0]" src="../assets/img/add.svg" alt="">
+                <img class="svg card-update" :title="'Update: ' + product.updated.split(',')[0]" src="../assets/img/update.svg" alt="">
+            </div>
         </div>
         <div class="card-body">
             <a href="#!">
@@ -15,10 +19,7 @@
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, tempora.</p>-->
                 <p>{{ product.description }}</p>
             </div>
-            <div class="card-update">
-                <div> Add: {{ product.added.split(',')[0] }}</div>
-                <div> Update: {{ product.updated.split(',')[0] }}</div>
-            </div>
+
         </div>
         <div class="card-footer is-flex">
             <a class="button is-info is-custom is-outlined" href="#!">
