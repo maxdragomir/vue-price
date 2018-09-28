@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <section class="hero is-medium has-text-centered is-header">
       <div class="hero-body">
           <div class="container">
@@ -18,7 +19,7 @@
                             <div class="level-item has-text-centered">
                                 <div><p class="title">We have:</p></div>
                             </div>
-                            <div class="level-item has-text-centered is-products">
+                            <div class="level-item has-text-centered is-products-stats">
                                 <div>
                                     <p class="title">{{ stats.products }}</p>
                                     <p class="heading">Products</p>
@@ -50,26 +51,26 @@
                     </div>
                 </div>
             </div>
-            <!--<p class="clients-details">We have...</p>-->
         </div>
     </section>
-      <section class="section is-try">
-          <div class="container">
-              <div class="has-text-centered">
-                  <h1 class="title">Try it yourself!</h1>
-                  <h2 class="subtitle">just start typing name of product or barcode</h2>
-              </div>
-              <div class="columns">
-                  <div class="column is-half-desktop is-offset-one-quarter-desktop">
-                      <b-field class="has-v-margin-2 is-home-input">
-                          <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
-                      </b-field>
-                  </div>
+
+    <section class="section is-try">
+      <div class="container">
+          <div class="has-text-centered">
+              <h1 class="title">Try it yourself!</h1>
+              <h2 class="subtitle">just start typing name of product or barcode</h2>
+          </div>
+          <div class="columns">
+              <div class="column is-half-desktop is-offset-one-quarter-desktop">
+                  <b-field class="has-v-margin-2 is-home-input">
+                      <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
+                  </b-field>
               </div>
           </div>
+      </div>
     </section>
 
-    <section class="section is-content has-v-padding-0">
+    <section class="section is-products has-v-padding-0">
       <div class="container">
           <section class="searchResults" v-if="isSearchUsed">
               <h2>We've found this products:</h2>
@@ -89,6 +90,7 @@
           </section>
       </div>
     </section>
+
   </div>
 
 </template>
@@ -144,7 +146,9 @@
 
 export default {
     name: 'home',
-    components: {ProductCard},
+    components: {
+        ProductCard
+    },
     data() {
         return {
             stats: {

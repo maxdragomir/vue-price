@@ -44,7 +44,7 @@ body {
       color: #fff; }
     .is-header .level .level-item {
       position: relative; }
-    .is-header .level .is-products .svg {
+    .is-header .level .is-products-stats .svg {
       position: absolute;
       top: -30%; }
     .is-header .level .svg {
@@ -89,12 +89,32 @@ body {
 .is-try .title {
   color: #6d9e42; }
 
-.is-content h2 {
+.is-products h2 {
   color: #333;
   font-size: 1.5rem;
   font-weight: 500;
   padding-bottom: 1rem;
   opacity: .5; }
+
+.is-content {
+  position: relative;
+  min-height: 100vh; }
+
+.is-test-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: #999; }
+  .is-test-page div {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
 
 .card {
   background-color: transparent;
@@ -182,23 +202,6 @@ body {
   font-size: .8rem;
   padding: .3rem;
   border-radius: 4px; }
-.card .card-info {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem; }
-  .card .card-info .svg {
-    width: 35px;
-    height: 35px;
-    background: #fff;
-    padding: 4px;
-    border-radius: 25px;
-    box-shadow: 0 3px 5px rgba(220, 220, 220, 0.8); }
-  .card .card-info .card-update {
-    width: 37px;
-    height: 37px;
-    margin-left: 5px; }
 .card.is-products .card-image {
   border-radius: 10px 10px 0 0;
   background-position: center center;
@@ -213,12 +216,12 @@ body {
   padding-bottom: 63.80597%; }
 .card.is-products .card-body {
   position: relative;
-  -ms-flex: 1;
   flex: 1;
-  padding: 1.5rem 1rem 1.5rem; }
+  justify-content: center;
+  padding: 1rem 1rem 2rem; }
 .card.is-products .card-title {
   color: #463853;
-  font-size: 1.375rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -234,7 +237,7 @@ body {
   line-height: 1.66667; }
 .card.is-products .card-footer {
   margin-top: -2rem;
-  padding: 2rem 1.5rem;
+  padding: 1rem;
   justify-content: flex-end; }
   .card.is-products .card-footer .is-custom {
     border-color: #e89223;
@@ -261,5 +264,22 @@ body {
   font-size: 1.25rem;
   font-weight: 500;
   color: #463853; }
+
+.wrapper-container {
+  margin-bottom: 200px;
+  box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(153, 153, 153, 0.1); }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4c3f37;
+  color: #fff;
+  font-size: 2rem; }
 
 /*# sourceMappingURL=main.css.map */
