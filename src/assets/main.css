@@ -147,11 +147,15 @@ footer {
 .is-try .control.has-icons-left .icon.is-left {
   height: 50px;
   width: 3.25em; }
-.is-try .no-result .input:focus {
-  border-color: #ff3860 !important;
-  box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.35) !important; }
-  .is-try .no-result .input:focus + span {
-    color: #ff3860 !important; }
+.is-try .no-result .input {
+  transition: all .25s ease; }
+  .is-try .no-result .input:focus {
+    border-color: #ff3860 !important;
+    box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.35) !important;
+    transition: all .25s ease; }
+    .is-try .no-result .input:focus + span {
+      color: #ff3860 !important;
+      transition: all .25s ease; }
 .is-try .title {
   color: #6d9e42; }
 

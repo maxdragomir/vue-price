@@ -220,12 +220,16 @@ footer {
   }
   .no-result {
     .input {
+      transition: all .25s ease;
+
       &:focus {
         border-color: $danger !important;
         box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.35) !important;
+        transition: all .25s ease;
 
         & + span {
           color: $danger !important;
+          transition: all .25s ease;
         }
       }
     }

@@ -3,7 +3,7 @@
     <nav class="navbar is-fixed-top is-small is-nav" v-on-clickaway ="away">
         <div class="container">
             <div class="navbar-brand">
-                <router-link class="navbar-item navbar-logo" to="/">
+                <router-link class="navbar-item navbar-logo" to="/" @click.native="closeNav">
                     PriceComparer
                 </router-link>
                 <a role="button" class="navbar-burger" data-target="main-nav" :class="{ 'is-active': mobnav }" @click="mobnav = !mobnav;">
