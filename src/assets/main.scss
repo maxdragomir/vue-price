@@ -4,6 +4,7 @@ $orange: #e89223;
 $light-green: #afd46a;
 $green: #6d9e42;
 $brown: #4c3f37;
+$danger: #ff3860;
 
 
 // HELPERS
@@ -113,6 +114,8 @@ footer {
 }
 
 
+
+
 //components
 .is-nav {
   min-height: 4rem;
@@ -192,24 +195,40 @@ footer {
 }
 
 .is-try {
+  .control.has-icons-left {
+    .input {
+      height: 50px;
+      font-size: 1.5rem;
+      border-radius: 25px;
+      transition: all .25s ease;
 
-  .input {
-    height: 50px;
-    font-size: 1.5rem;
-    border-radius: 25px;
+      &:focus {
+        border-color: $green;
+        box-shadow: 0 0 0 0.125em rgba(109, 158, 66, 0.35);
+        transition: all .25s ease;
 
-    &:focus {
-      border-color: $green;
-      box-shadow: 0 0 0 0.125em rgba(109, 158, 66, 0.25);
-
-      & + span {
-        color: $green !important;
+        & + span {
+          color: $green;
+          transition: all .25s ease;
+        }
       }
     }
+    .icon.is-left {
+      height: 50px;
+      width: 3.25em;
+    }
   }
-  .control.has-icons-left .icon.is-left {
-    height: 50px;
-    width: 3.25em;
+  .no-result {
+    .input {
+      &:focus {
+        border-color: $danger !important;
+        box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.35) !important;
+
+        & + span {
+          color: $danger !important;
+        }
+      }
+    }
   }
   .title {
     color: $green;

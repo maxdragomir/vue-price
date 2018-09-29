@@ -62,7 +62,7 @@
           <div class="columns">
               <div class="column is-half-desktop is-offset-one-quarter-desktop">
                   <b-field class="has-t-margin-2 is-home-input">
-                      <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
+                      <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search" v-bind:class="{ 'no-result': noResult}"></b-input>
                   </b-field>
               </div>
           </div>

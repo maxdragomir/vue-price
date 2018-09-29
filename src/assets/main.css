@@ -132,18 +132,26 @@ footer {
   .is-home-numbers .columns {
     justify-content: center; }
 
-.is-try .input {
+.is-try .control.has-icons-left .input {
   height: 50px;
   font-size: 1.5rem;
-  border-radius: 25px; }
-  .is-try .input:focus {
+  border-radius: 25px;
+  transition: all .25s ease; }
+  .is-try .control.has-icons-left .input:focus {
     border-color: #6d9e42;
-    box-shadow: 0 0 0 0.125em rgba(109, 158, 66, 0.25); }
-    .is-try .input:focus + span {
-      color: #6d9e42 !important; }
+    box-shadow: 0 0 0 0.125em rgba(109, 158, 66, 0.35);
+    transition: all .25s ease; }
+    .is-try .control.has-icons-left .input:focus + span {
+      color: #6d9e42;
+      transition: all .25s ease; }
 .is-try .control.has-icons-left .icon.is-left {
   height: 50px;
   width: 3.25em; }
+.is-try .no-result .input:focus {
+  border-color: #ff3860 !important;
+  box-shadow: 0 0 0 0.125em rgba(255, 56, 96, 0.35) !important; }
+  .is-try .no-result .input:focus + span {
+    color: #ff3860 !important; }
 .is-try .title {
   color: #6d9e42; }
 
