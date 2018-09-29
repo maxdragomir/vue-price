@@ -12,6 +12,8 @@ import 'buefy/dist/buefy.css'
 import './assets/main.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 
+import'animate.css'
+
 Vue.config.productionTip = false
 
 const httpLink = new HttpLink({

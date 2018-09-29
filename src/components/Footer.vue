@@ -1,6 +1,6 @@
 <template>
 
-    <footer>Footer</footer>
+    <footer>© 2018 PriceComparer</footer>
 
 </template>
 

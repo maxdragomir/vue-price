@@ -1,4 +1,4 @@
-<template>
+<template >
   <div>
 
     <section class="hero is-medium has-text-centered is-header">
@@ -47,7 +47,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -62,7 +61,7 @@
           </div>
           <div class="columns">
               <div class="column is-half-desktop is-offset-one-quarter-desktop">
-                  <b-field class="has-v-margin-2 is-home-input">
+                  <b-field class="has-t-margin-2 is-home-input">
                       <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
                   </b-field>
               </div>
@@ -70,10 +69,14 @@
       </div>
     </section>
 
-    <section class="section is-products has-v-padding-0">
+    <section class="section is-products has-t-padding-0 has-b-padding-5">
       <div class="container">
+
           <section class="searchResults" v-if="isSearchUsed">
-              <h2>We've found this products:</h2>
+
+              <h2 v-if="noResult">No result</h2>
+              <h2 v-else>We've found this products:</h2>
+
               <div class="columns is-multiline">
                   <div class="column is-one-fifth" v-for="product in searchResults" :key="product.id">
                       <ProductCard v-bind:product="product" />
@@ -82,12 +85,15 @@
           </section>
           <section class="latestProducts" v-else>
               <h2>Last products:</h2>
-              <div class="columns">
+              <div class="columns is-multiline">
                   <div class="column is-one-fifth" v-for="product in latestProducts" :key="product.id">
                       <ProductCard v-bind:product="product" />
                   </div>
               </div>
           </section>
+
+
+
       </div>
     </section>
 
@@ -109,7 +115,7 @@
   }`;
 
   const latestProducts = gql`query{
-    products(count: 5, orderBy: updated, orderDirection: asc){
+    products(count: 10, orderBy: updated, orderDirection: asc){
       id
       name
       categoryId
@@ -177,14 +183,20 @@ export default {
               }
             },
             update (data) {
-              return data.productsSearch;
+                return data.productsSearch;
             }
         }
     },
     computed: {
       isSearchUsed () {
           return this.searchQuery.length;
+      },
+      noResult () {
+          if(this.searchResults.length === 0) {
+              return true;
+          }
       }
+
     }
 }
 </script>
