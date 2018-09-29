@@ -19,6 +19,27 @@ body, nav {
   .wrapper-container > div {
     margin-top: 4rem; }
 
+nav {
+  height: 4rem; }
+  nav .navbar-burger {
+    height: auto;
+    color: #333; }
+  nav .navbar-item {
+    transition: all .25s ease; }
+    nav .navbar-item.is-active, nav .navbar-item.is-active:hover {
+      box-shadow: inset 0 -4rem 0 #afd46a;
+      color: #fff; }
+    nav .navbar-item:hover {
+      background-color: transparent;
+      box-shadow: inset 0 -0.5rem 0 #afd46a;
+      color: #333; }
+    nav .navbar-item.navbar-logo {
+      font-size: 2rem;
+      font-weight: bold; }
+      nav .navbar-item.navbar-logo:hover {
+        color: #afd46a;
+        box-shadow: none; }
+
 footer {
   position: fixed;
   bottom: 0;
@@ -60,27 +81,9 @@ footer {
   opacity: 0;
   transform: scale(1.05); }
 
-.title-enter-active, .title-leave-active {
-  transition: all .25s ease; }
-
-.title-enter-active {
-  transition-delay: .25s; }
-
-.title-enter {
-  transform: translateX(-0.5rem);
-  opacity: 0; }
-
-.title-leave-active {
-  opacity: 0;
-  transform: translateX(0.5rem); }
-
 .is-nav {
   min-height: 4rem;
   box-shadow: 0 1px 4px 0 rgba(70, 56, 83, 0.1); }
-
-.is-logo {
-  font-size: 2rem;
-  font-weight: bold; }
 
 .is-header {
   background: #afd46a;
@@ -169,7 +172,8 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    font-size: 7vw; }
 
 .card {
   background-color: transparent;
@@ -303,5 +307,22 @@ footer {
       color: #fff; }
 .card.media:not(:last-child) {
   margin-bottom: 0.75rem; }
+
+@media screen and (max-width: 1087px) {
+  nav .navbar-menu {
+    display: block;
+    transform: scale(1, 0);
+    transform-origin: top;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s ease; }
+    nav .navbar-menu.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      transition: all .25s ease; } }
+@media screen and (max-width: 768px) {
+  .is-home-numbers .level-item:not(:last-child) {
+    margin-bottom: 3rem; } }
 
 /*# sourceMappingURL=main.css.map */

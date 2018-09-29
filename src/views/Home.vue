@@ -12,7 +12,7 @@
           </div>
       </div>
         <div class="is-home-numbers">
-            <div class="container" >
+            <div class="container">
                 <div class="columns is-gapless">
                     <div class="column is-two-thirds has-text-centered">
                         <div class="level">
@@ -73,26 +73,23 @@
       <div class="container">
 
           <section class="searchResults" v-if="isSearchUsed">
-
               <h2 v-if="noResult">No result</h2>
               <h2 v-else>We've found this products:</h2>
-
-              <div class="columns is-multiline">
-                  <div class="column is-one-fifth" v-for="product in searchResults" :key="product.id">
+              <div class="columns is-multiline is-two-thirds-mobile">
+                  <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in searchResults" :key="product.id">
                       <ProductCard v-bind:product="product" />
                   </div>
               </div>
           </section>
+
           <section class="latestProducts" v-else>
               <h2>Last products:</h2>
-              <div class="columns is-multiline">
-                  <div class="column is-one-fifth" v-for="product in latestProducts" :key="product.id">
+              <div class="columns is-multiline is-two-thirds-mobile">
+                  <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in latestProducts" :key="product.id">
                       <ProductCard v-bind:product="product" />
                   </div>
               </div>
           </section>
-
-
 
       </div>
     </section>
