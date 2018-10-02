@@ -99,7 +99,7 @@
   }`;
 
   const latestProducts = gql`query{
-    products(count: 5, orderBy: updated, orderDirection: asc){
+    products(count: 5, orderBy: updated, orderDirection: desc){
       id
       name
       categoryId
@@ -153,6 +153,7 @@ export default {
         stats: getStatsQuery,
         latestProducts: {
             query: latestProducts,
+            pollInterval: 1500,
             update (data) {
               return data.products;
             }
