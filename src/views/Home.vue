@@ -115,7 +115,7 @@
     products(count: 10, orderBy: updated, orderDirection: asc){
       id
       name
-      categoryId
+      categoriesIds
       description
       barcodes
       photos
@@ -133,7 +133,7 @@
     productsSearch(query: $query) {
       id
       name
-      categoryId
+      categoriesIds
       description
       barcodes
       photos
