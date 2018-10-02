@@ -1,41 +1,55 @@
 <template>
-    <div class="container">
-        <nav class="navbar is-transparent">
-            <div class="navbar-brand">
-                <router-link active-class="is-active" class="navbar-item" to="/">
-                    <img src="https://bulma.io/images/bulma-logo.png"
-                         alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-                </router-link>
-                <div class="navbar-burger burger" data-target="main-nav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
 
-            <div id="main-nav" class="navbar-menu">
-                <div class="navbar-start">
-                    <router-link active-class="is-active" class="navbar-item" to="/">
+    <nav class="navbar is-fixed-top is-small is-nav" v-on-clickaway ="away">
+        <div class="container">
+            <div class="navbar-brand">
+                <router-link class="navbar-item navbar-logo" to="/" @click.native="closeNav">
+                    PriceComparer
+                </router-link>
+                <a role="button" class="navbar-burger" data-target="main-nav" :class="{ 'is-active': mobnav }" @click="mobnav = !mobnav;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <div id="main-nav" class="navbar-menu" :class="{ 'is-active': mobnav }">
+                <div class="navbar-end">
+                    <router-link active-class="is-active" class="navbar-item" to="/" exact @click.native="closeNav">
                         Home
                     </router-link>
-                    <router-link active-class="is-active" class="navbar-item" to="/categories">
+                    <router-link active-class="is-active" class="navbar-item" to="/categories" @click.native="closeNav">
                         Categories
                     </router-link>
-                </div>
-
-                <div class="navbar-end">
-                    <router-link active-class="is-active" class="navbar-item" to="/about">
+                    <router-link active-class="is-active" class="navbar-item" to="/about" @click.native="closeNav">
                         About
                     </router-link>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
 </template>
 
 <script>
+    import { mixin as clickaway } from 'vue-clickaway';
+
     export default {
-        name: "Navigation"
+        name: "Navigation",
+        mixins: [ clickaway ],
+
+        data() {
+            return {
+                mobnav: false,
+            }
+        },
+        methods: {
+            closeNav: function() {
+                this.mobnav = false
+            },
+            away: function() {
+                this.mobnav = false
+            },
+        }
     }
 </script>
 
