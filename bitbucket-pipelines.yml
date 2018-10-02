@@ -1,0 +1,28 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:latest
+
+pipelines:
+  custom:
+    build-and-deploy:
+      - step:
+          caches:
+            - node
+          script: # Modify the commands below to build your repository.
+            - npm install -g @vue/cli
+            - npm install
+            - npm run build
+          artifacts:
+            - dist/**
+      - step:
+           name: Deploy to staging
+           image: samueldebruyn/debian-git
+           deployment: staging
+           script:
+             - mkdir -p ~/.ssh
+             - echo $MY_SSH_KEY | base64 --decode > ~/.ssh/id_rsa
+             - chmod 0600 ~/.ssh/id_rsa
+             - scp -i ~/.ssh/id_rsa -P $SERVER_PORT -r $DIRECTORY_TRANSFER_LIST $USERNAME@$SERVER_IP_ADDRESS:/var/www/pricecomparer-vue

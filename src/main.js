@@ -11,11 +11,13 @@ import VueApollo from 'vue-apollo'
 import 'buefy/dist/buefy.css'
 import './assets/main.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import'animate.css'
+
 
 Vue.config.productionTip = false
 
 const httpLink = new HttpLink({
-    uri: 'http://api.pricecomparer.tk/graphql',
+    uri: 'https://api.pricecomparer.tk/graphql',
 })
 
 // Create the apollo client

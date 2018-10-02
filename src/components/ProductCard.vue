@@ -1,36 +1,32 @@
 <template>
+    <transition name="products">
+        <div class="card is-products">
+            <div class="card-header">
+                <a href="javascript:;" class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
+                <div class="card-price">
+                    {{ product.prices | toPriceRange }}
+                </div>
+            </div>
+            <div class="card-body">
+                <a href="javascript:;">
+                    <div class="card-title" :title="product.name"> {{ product.name }} </div>
+                </a>
+                <div class="card-description">
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, tempora.</p>-->
+                    <p>{{ product.description }}</p>
+                </div>
 
-    <div class="card is-products">
-        <div class="card-header">
-            <a href="#!" class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
-            <div class="card-price">
-                {{ product.prices | toPriceRange }}
+            </div>
+            <div class="card-footer is-flex">
+                <a class="button is-info is-custom is-outlined" href="javascript:;">
+                    <span class="icon is-small">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <span>More info</span>
+                </a>
             </div>
         </div>
-        <div class="card-body">
-            <a href="#!">
-                <div class="card-title" :title="product.name"> {{ product.name }} </div>
-            </a>
-            <div class="card-description">
-                <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, tempora.</p>-->
-                <p>{{ product.description }}</p>
-            </div>
-            <div class="card-update">
-                <div> Add: {{ product.added.split(',')[0] }}</div>
-                <div> Update: {{ product.updated.split(',')[0] }}</div>
-            </div>
-        </div>
-        <div class="card-footer is-flex">
-            <a class="button is-info is-custom is-outlined" href="#!">
-                <span class="icon is-small">
-                    <i class="fas fa-info-circle"></i>
-                </span>
-                <span>More info</span>
-            </a>
-        </div>
-    </div>
-
-
+    </transition>
 </template>
 
 <script>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.3.1",
+    "animate.css": "^3.7.0",
     "apollo-boost": "^0.1.16",
     "apollo-cache-inmemory": "^1.2.10",
     "apollo-client": "^2.4.2",
@@ -19,6 +20,7 @@
     "graphql-tag": "^2.9.2",
     "vue": "^2.5.17",
     "vue-apollo": "^3.0.0-beta.25",
+    "vue-clickaway": "^2.2.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
