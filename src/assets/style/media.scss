@@ -1,0 +1,27 @@
+
+//media
+
+@media screen and (max-width: 1087px) {
+  nav {
+    .navbar-menu {
+      display: block;
+      transform: scale(1, 0);
+      transform-origin: top;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .25s ease;
+
+      &.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: all .25s ease;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .is-home-numbers .level-item:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}

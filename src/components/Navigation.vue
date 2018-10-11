@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar is-fixed-top is-small is-nav" v-on-clickaway ="away">
+    <nav class="navbar is-fixed-top is-small is-nav" v-on-clickaway="away">
         <div class="container">
             <div class="navbar-brand">
                 <router-link class="navbar-item navbar-logo" to="/" @click.native="closeNav">
@@ -22,6 +22,9 @@
                     </router-link>
                     <router-link active-class="is-active" class="navbar-item" to="/about" @click.native="closeNav">
                         About
+                    </router-link>
+                    <router-link active-class="is-active" class="navbar-item" to="/product" @click.native="closeNav">
+                        Product Modal
                     </router-link>
                 </div>
             </div>

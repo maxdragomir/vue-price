@@ -1,8 +1,9 @@
 <template>
+
     <transition name="products">
         <div class="card is-products">
             <div class="card-header">
-                <a href="javascript:;" class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
+                <a href="javascript:;"  class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
                 <div class="card-price">
                     {{ product.prices | toPriceRange }}
                 </div>
@@ -25,8 +26,11 @@
                     <span>More info</span>
                 </a>
             </div>
+
         </div>
+
     </transition>
+
 </template>
 
 <script>
@@ -60,7 +64,7 @@
             }
         },
         props: {
-            product: Object
+            product: Object,
         },
     }
 </script>

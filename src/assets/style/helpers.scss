@@ -1,0 +1,45 @@
+
+// HELPERS
+
+.has-t-padding-0 {
+  padding-top: 0;
+}
+.has-b-padding-5 {
+  padding-bottom: 5rem;
+}
+.has-t-margin-1 {
+  margin-top: 1rem;
+}
+.has-t-margin-2 {
+  margin-top: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ANIMATED HELPERS
+
+.animated.delay-0_5s {
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+}
+.animated.delay-1_5s {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+.animated.delay-2_5s {
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+}
+.animated.delay-3_5s {
+  -webkit-animation-delay: 3.5s;
+  animation-delay: 3.5s;
+}

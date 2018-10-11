@@ -1,10 +1,9 @@
-<template >
+<template>
   <div>
-
-    <section class="hero is-medium has-text-centered is-header">
+    <section class="hero is-medium is-header has-text-centered">
       <div class="hero-body">
           <div class="container">
-              <div class="svg">
+              <div class="svg animated fadeInUp delay-1s">
                   <img src="../assets/img/market.svg" alt="">
               </div>
               <h1 class="title">Price Comparer</h1>
@@ -23,7 +22,7 @@
                                 <div>
                                     <p class="title">{{ stats.products }}</p>
                                     <p class="heading">Products</p>
-                                    <div class="svg">
+                                    <div class="svg animated fadeInUp delay-1_5s">
                                         <img src="../assets/img/shopping-bag.svg" alt="">
                                     </div>
                                 </div>
@@ -32,7 +31,7 @@
                                 <div>
                                     <p class="title">{{ stats.categories }}</p>
                                     <p class="heading">Categories</p>
-                                    <div class="svg">
+                                    <div class="svg animated fadeInUp delay-2s">
                                         <img src="../assets/img/checklist.svg" alt="">
                                     </div>
                                 </div>
@@ -41,7 +40,7 @@
                                 <div>
                                     <p class="title">{{ stats.shops }}</p>
                                     <p class="heading">Shops</p>
-                                    <div class="svg">
+                                    <div class="svg animated fadeInUp delay-2_5s">
                                         <img src="../assets/img/shop.svg" alt="">
                                     </div>
                                 </div>
@@ -93,7 +92,6 @@
 
       </div>
     </section>
-
   </div>
 
 </template>
@@ -149,9 +147,12 @@
 
 export default {
     name: 'home',
-    components: {ProductCard},
+    components: {
+        ProductCard,
+    },
     data() {
         return {
+            isCardModalActive: false,
             stats: {
                 products: 0,
                 categories: 0,
@@ -186,7 +187,13 @@ export default {
     computed: {
       isSearchUsed () {
           return this.searchQuery.length;
+      },
+      noResult () {
+          if(this.searchResults.length === 0) {
+              return true;
+          }
       }
-    }
+    },
+
 }
 </script>

@@ -1,4 +1,4 @@
-<template >
+<template>
     <div>
         <div class="is-test-page">
             <div>This is categories page</div>
