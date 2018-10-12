@@ -2,7 +2,7 @@ module.exports = {
     chainWebpack(config) {
         config.module // optional
             .rule('graphql')
-            .test(/\.graphql$/)
+            .test(/\.(graphql|gql)$/)
             .use('graphql-tag/loader')
             .loader('graphql-tag/loader')
             .end()

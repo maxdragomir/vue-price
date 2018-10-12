@@ -1,10 +1,6 @@
 <template>
     <section>
-        <button class="button is-primary is-medium"
-                @click="isCardModalActive = true">
-            Launch component modal
-        </button>
-        <b-modal :active.sync="isCardModalActive" :width="640" scroll="keep">
+        <b-modal :active.sync="isCardModalActive" :width="640" scroll="keep" v-on:close="$emit('close')">
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
@@ -39,10 +35,18 @@
 
 <script>
     export default {
-        data() {
-            return {
-                isCardModalActive: false,
+        props: {
+            showModal: Boolean,
+            product: Object
+        },
+        computed: {
+            isCardModalActive: {
+                get () {
+                    return this.showModal;
+                },
+                set () {
 
+                }
             }
         }
     }

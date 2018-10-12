@@ -23,7 +23,7 @@
                     <span class="icon is-small">
                         <i class="fas fa-eye"></i>
                     </span>
-                    <span>More info</span>
+                    <span v-on:click="$emit('show-product-modal', product.id)" ref="product.id">More info</span>
                 </a>
             </div>
 
@@ -65,7 +65,7 @@
         },
         props: {
             product: Object,
-        },
+        }
     }
 </script>
 

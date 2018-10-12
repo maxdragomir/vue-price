@@ -2,9 +2,9 @@
     <div id="app" class="wrapper-container">
         <div is="Navigation"></div>
         <transition name="fade">
-            <div is="router-view" class="is-content"></div>
+            <div is="router-view" class="is-content" v-on:show-product-modal="showProductModal"></div>
         </transition>
-        <!--<div is="ProductModal"></div>-->
+        <div is="ProductModal"></div>
         <div is="Footer"></div>
         <div is="Loader"></div>
     </div>
@@ -23,6 +23,11 @@
             Loader,
             ProductModal
         },
+        methods: {
+            showProductModal (productId) {
+                console.log(productId);
+            }
+        }
     }
 
 

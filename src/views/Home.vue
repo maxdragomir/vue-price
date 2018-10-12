@@ -55,13 +55,13 @@
     <section class="section is-try">
       <div class="container">
           <div class="has-text-centered">
-              <h1 class="title">Try it yourself!</h1>
+              <h1 class="title">Try it by yourself!</h1>
               <h2 class="subtitle">just start typing name of product or barcode</h2>
           </div>
           <div class="columns">
               <div class="column is-half-desktop is-offset-one-quarter-desktop">
                   <b-field class="has-t-margin-2 is-home-input">
-                      <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search" v-bind:class="{ 'no-result': noResult}"></b-input>
+                      <b-input v-model="searchQuery" placeholder="Name or barcode of product" icon="search"></b-input>
                   </b-field>
               </div>
           </div>
@@ -72,22 +72,36 @@
       <div class="container">
 
           <section class="searchResults" v-if="isSearchUsed">
-              <h2 v-if="noResult">No result</h2>
-              <h2 v-else>We've found this products:</h2>
-              <div class="columns is-multiline is-two-thirds-mobile">
-                  <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in searchResults" :key="product.id">
-                      <ProductCard v-bind:product="product" />
-                  </div>
-              </div>
+              <ApolloQuery :query="require('@/apollo/productsSearch.gql')" :variables="{ query: searchQuery }">
+                  <template slot-scope="{ result: { loading, data} }">
+                      <div v-if="loading">Loading...</div>
+                      <div v-else-if="data">
+                          <div v-if="data.productsSearch.length">
+                              <h2>We've found this products:</h2>
+                              <div class="columns is-multiline is-two-thirds-mobile">
+                                  <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in data.productsSearch" :key="product.id">
+                                      <ProductCard v-bind:product="product" v-on:show-product-modal="launchCardModal" />
+                                  </div>
+                              </div>
+                          </div>
+                          <h2 v-else>No results</h2>
+                      </div>
+                  </template>
+              </ApolloQuery>
           </section>
 
           <section class="latestProducts" v-else>
               <h2>Last products:</h2>
-              <div class="columns is-multiline is-two-thirds-mobile">
-                  <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in latestProducts" :key="product.id">
-                      <ProductCard v-bind:product="product" />
-                  </div>
-              </div>
+              <ApolloQuery :query="require('@/apollo/latestProducts.gql')" :pollInterval="5000" :skip="isSearchUsed">
+                <template slot-scope="{ result: { loading, data } }">
+                    <div v-if="loading">Loading...</div>
+                    <div v-else-if="data" class="columns is-multiline is-two-thirds-mobile">
+                        <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in data.products" :key="product.id">
+                            <ProductCard v-bind:product="product" v-on:show-product-modal="launchCardModal" />
+                        </div>
+                    </div>
+                </template>
+              </ApolloQuery>
           </section>
 
       </div>
@@ -109,42 +123,6 @@
     }
   }`;
 
-  const latestProducts = gql`query{
-    products(count: 10, orderBy: updated, orderDirection: desc){
-      id
-      name
-      categoriesIds
-      description
-      barcodes
-      photos
-      mainPhoto
-      prices {
-        price
-        measure
-      }
-      added(format: long)
-      updated(format: long)
-    }
-  }`;
-
-  const search = gql`query getSearch($query: String) {
-    productsSearch(query: $query) {
-      id
-      name
-      categoriesIds
-      description
-      barcodes
-      photos
-      mainPhoto
-      prices {
-        price
-        measure
-      }
-      added(format: long)
-      updated(format: long)
-    }
-  }`;
-
 export default {
     name: 'home',
     components: {
@@ -152,48 +130,26 @@ export default {
     },
     data() {
         return {
-            isCardModalActive: false,
             stats: {
                 products: 0,
                 categories: 0,
                 shops: 0
             },
-            latestProducts: [],
-            searchResults: [],
             searchQuery: '',
         }
     },
     apollo: {
-        stats: getStatsQuery,
-        latestProducts: {
-            query: latestProducts,
-            pollInterval: 1500,
-            update (data) {
-              return data.products;
-            }
-        },
-        searchResults: {
-            query: search,
-            variables() {
-              return {
-                query: this.searchQuery
-              }
-            },
-            update (data) {
-              return data.productsSearch;
-            }
-        }
+        stats: getStatsQuery
     },
     computed: {
       isSearchUsed () {
-          return this.searchQuery.length;
-      },
-      noResult () {
-          if(this.searchResults.length === 0) {
-              return true;
-          }
+          return this.searchQuery.length !== 0;
       }
     },
-
+    methods: {
+        launchCardModal (productId) {
+            this.$emit('show-product-modal', productId);
+        }
+    }
 }
 </script>

@@ -1,0 +1,17 @@
+query getSearch($query: String) {
+  productsSearch(query: $query) {
+    id
+    name
+    categoriesIds
+    description
+    barcodes
+    photos
+    mainPhoto
+    prices {
+      price
+      measure
+    }
+    added(format: long)
+    updated(format: long)
+  }
+}
