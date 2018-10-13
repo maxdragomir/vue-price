@@ -1,0 +1,21 @@
+query getProduct($id: Int) {
+  product(id: $id) {
+    id
+    name
+    categoriesIds
+    description
+    barcodes
+    photos
+    mainPhoto
+    prices {
+      shop {
+        name
+        photo
+      }
+      price
+      measure
+    }
+    added(format: long)
+    updated(format: long)
+  }
+}

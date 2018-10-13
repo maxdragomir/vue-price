@@ -4,7 +4,7 @@
         <transition name="fade">
             <div is="router-view" class="is-content" v-on:show-product-modal="showProductModal"></div>
         </transition>
-        <div is="ProductModal"></div>
+        <div is="ProductModal" v-bind:productId="modalProductId" v-on:close="productModalClosed"></div>
         <div is="Footer"></div>
         <div is="Loader"></div>
     </div>
@@ -17,6 +17,12 @@
     import ProductModal from "./components/ProductModal";
 
     export default {
+        data () {
+            return {
+                showModal: false,
+                modalProductId: null
+            }
+        },
         components: {
             Navigation,
             Footer,
@@ -25,7 +31,10 @@
         },
         methods: {
             showProductModal (productId) {
-                console.log(productId);
+                this.modalProductId = productId;
+            },
+            productModalClosed () {
+                this.modalProductId = null;
             }
         }
     }
