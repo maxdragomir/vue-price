@@ -1,6 +1,6 @@
 <template>
     <section>
-        <b-modal :active.sync="isCardModalActive" :width="640" scroll="keep" v-on:close="$emit('close')">
+        <b-modal :active.sync="isCardModalActive" :width="640" v-on:close="$emit('close')">
             <ApolloQuery :query="require('@/apollo/product.gql')" :variables="{ id: productId }">
                 <template slot-scope="{ result: { loading, data } }">
                     <div v-if="loading">
