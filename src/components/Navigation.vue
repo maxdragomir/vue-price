@@ -23,9 +23,6 @@
                     <router-link active-class="is-active" class="navbar-item" to="/about" @click.native="closeNav">
                         About
                     </router-link>
-                    <router-link active-class="is-active" class="navbar-item" to="/product" @click.native="closeNav">
-                        Product Modal
-                    </router-link>
                 </div>
             </div>
         </div>

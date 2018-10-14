@@ -21,7 +21,8 @@
     "vue": "^2.5.17",
     "vue-apollo": "^3.0.0-beta.25",
     "vue-clickaway": "^2.2.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vueperslides": "^1.13.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.3",

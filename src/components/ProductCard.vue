@@ -3,13 +3,13 @@
     <transition name="products">
         <div class="card is-products">
             <div class="card-header">
-                <a href="javascript:;"  class="card-image" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
+                <a href="javascript:;"  class="card-image"  v-on:click="$emit('show-product-modal', product.id)" ref="product.id" :style="{'background-image': 'url(' + product.mainPhoto + ')'}"></a>
                 <div class="card-price">
                     {{ product.prices | toPriceRange }}
                 </div>
             </div>
             <div class="card-body">
-                <a href="javascript:;">
+                <a href="javascript:;" v-on:click="$emit('show-product-modal', product.id)" ref="product.id">
                     <div class="card-title" :title="product.name"> {{ product.name }} </div>
                 </a>
                 <div class="card-description">
@@ -19,16 +19,21 @@
 
             </div>
             <div class="card-footer is-flex">
-                <a class="button is-info is-custom is-outlined" href="javascript:;">
+                <a class="button is-custom is-outlined" href="javascript:;"  v-on:click="$emit('show-product-modal', product.id)" ref="product.id">
                     <span class="icon is-small">
                         <i class="fas fa-eye"></i>
                     </span>
-                    <span v-on:click="$emit('show-product-modal', product.id)" ref="product.id">More info</span>
+                    <!--<span>More info</span>-->
+                </a>
+                <a href="javascript:;" class="button is-custom">
+                    <span class="icon is-small">
+                        <i class="fa fa-cart-plus"></i>
+                    </span>
+                    <span class="text">Add to cart</span>
                 </a>
             </div>
 
         </div>
-
     </transition>
 
 </template>

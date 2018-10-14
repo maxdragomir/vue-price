@@ -1,6 +1,37 @@
 
 // HELPERS
 
+.novus {
+  color: $novus;
+}
+.metro {
+  color: $metro;
+}
+.auchan {
+  color: $auchan;
+}
+.button.is-custom {
+  background: $orange;
+  border-color: $orange;
+  color: $white;
+
+  &:hover, &:focus {
+    background: transparent;
+    color: $orange;
+  }
+
+  &.is-outlined {
+    background: transparent;
+    border-color: $orange;
+    color: $orange;
+
+    &:hover, &:focus {
+      background: $orange;
+      color: $white;
+    }
+  }
+}
+
 .has-t-padding-0 {
   padding-top: 0;
 }

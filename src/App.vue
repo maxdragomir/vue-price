@@ -1,12 +1,12 @@
 <template>
     <div id="app" class="wrapper-container">
-        <div is="Navigation"></div>
+        <Navigation></Navigation>
         <transition name="fade">
             <div is="router-view" class="is-content" v-on:show-product-modal="showProductModal"></div>
         </transition>
-        <div is="ProductModal" v-bind:productId="modalProductId" v-on:close="productModalClosed"></div>
-        <div is="Footer"></div>
-        <div is="Loader"></div>
+        <product-modal v-bind:productId="modalProductId" v-on:close="productModalClosed"></product-modal>
+        <Footer></Footer>
+        <Loader></Loader>
     </div>
 </template>
 
@@ -38,8 +38,5 @@
             }
         }
     }
-
-
-
 
 </script>
