@@ -75,7 +75,7 @@
               <ApolloQuery :query="require('@/apollo/productsSearch.gql')" :variables="{ query: searchQuery }">
                   <template slot-scope="{ result: { loading, data} }">
                       <div v-if="loading">Loading...</div>
-                      <div v-else-if="data">
+                      <div v-else-if="data && data.productsSearch">
                           <div v-if="data.productsSearch.length">
                               <h2>We've found this products:</h2>
                               <div class="columns is-multiline is-two-thirds-mobile">
@@ -95,7 +95,7 @@
               <ApolloQuery :query="require('@/apollo/latestProducts.gql')" :pollInterval="5000" :skip="isSearchUsed">
                 <template slot-scope="{ result: { loading, data } }">
                     <div v-if="loading">Loading...</div>
-                    <div v-else-if="data" class="columns is-multiline is-two-thirds-mobile">
+                    <div v-else-if="data && data.products" class="columns is-multiline is-two-thirds-mobile">
                         <div class="column is-one-third-tablet is-one-fifth-desktop" v-for="product in data.products" :key="product.id">
                             <ProductCard v-bind:product="product" v-on:show-product-modal="launchCardModal" />
                         </div>
