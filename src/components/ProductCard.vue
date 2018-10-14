@@ -19,7 +19,7 @@
 
             </div>
             <div class="card-footer is-flex">
-                <a class="button is-custom is-outlined" href="javascript:;"  v-on:click="$emit('show-product-modal', product.id)" ref="product.id">
+                <a class="button is-custom is-outlined" title="More info" href="javascript:;"  v-on:click="$emit('show-product-modal', product.id)" ref="product.id">
                     <span class="icon is-small">
                         <i class="fas fa-eye"></i>
                     </span>
