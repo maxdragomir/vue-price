@@ -10,11 +10,14 @@
                             <div class="product-info">
                                 <div class="modal_left">
                                     <!--<img :src="data.product.mainPhoto">-->
-                                    <vueper-slides class="no-shadow" autoplay :dragging-distance="70">
-                                    <v-icon slot="arrowLeft" color="white" large><i class="fa fa-arrow-left left" aria-hidden="true"></i></v-icon>
-                                    <v-icon slot="arrowRight" color="white" large><i class="fa fa-arrow-right right" aria-hidden="true"></i></v-icon>
-                                    <vueper-slide v-for="(slide, i) in slides" :key="i" :title="slide.title" :content="slide.content"></vueper-slide>
-                                    </vueper-slides>
+                                    <img v-if="data.product.photos.length === 1" v-bind:src="data.product.photos[0]">
+                                    <div v-else>
+                                        <vueper-slides class="no-shadow" autoplay :dragging-distance="70">
+                                            <v-icon slot="arrowLeft" color="white" large><i class="fa fa-arrow-left left" aria-hidden="true"></i></v-icon>
+                                            <v-icon slot="arrowRight" color="white" large><i class="fa fa-arrow-right right" aria-hidden="true"></i></v-icon>
+                                            <vueper-slide v-for="(photo, i) in data.product.photos" :key="i" :image="photo"></vueper-slide>
+                                        </vueper-slides>
+                                    </div>
                                 </div>
                                 <div class="modal_right">
                                     <div class="modal_header">
@@ -23,17 +26,9 @@
                                     </div>
 
                                     <div class="modal_content">
-                                        <div class="modal_row">
-                                            <div class="name novus">NOVUS</div>
-                                            <div class="price">123 грн</div>
-                                        </div>
-                                        <div class="modal_row">
-                                            <div class="name metro">METRO</div>
-                                            <div class="price">231 грн</div>
-                                        </div>
-                                        <div class="modal_row">
-                                            <div class="name auchan">AUCHAN</div>
-                                            <div class="price">312 грн</div>
+                                        <div class="modal_row" v-for="price in data.product.prices" v-bind:key="price.shop.name">
+                                            <div class="name novus">{{price.shop.name}}</div>
+                                            <div class="price">{{price.price}} грн</div>
                                         </div>
                                     </div>
 
@@ -69,18 +64,6 @@
         components: { VueperSlides, VueperSlide },
         data () {
             return {
-                slides: [
-                    {
-                        title: 'Slide #1',
-                        content: 'Slide content.',
-                        image: ''
-                    },
-                    {
-                        title: 'Slide #2',
-                        content: 'Slide content.',
-                        image: ''
-                    },
-                ]
             }
         },
         props: {
