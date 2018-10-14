@@ -23,7 +23,7 @@
                     <span class="icon is-small">
                         <i class="fas fa-eye"></i>
                     </span>
-                    <span>More info</span>
+                    <span class="text">More info</span>
                 </a>
                 <a href="javascript:;" class="button is-custom" title="Add to cart">
                     <span class="icon is-small">

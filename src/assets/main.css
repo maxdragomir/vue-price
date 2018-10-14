@@ -430,11 +430,16 @@ footer {
     .product-info {
       width: 100%; } }
   .product-info .modal_left {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1 1 50%;
     position: relative;
     margin: 20px;
     border-radius: 8px; }
+    .product-info .modal_left > div {
+      position: relative;
+      width: 100%; }
     .product-info .modal_left .fa {
       font-size: 1.5rem;
       color: #e8e8e8;
@@ -533,7 +538,7 @@ footer {
 @media screen and (max-width: 1280px) {
   .is-products .button .text {
     display: none; }
-  .is-products .button .icon:first-child:not(:last-child) {
+  .is-products .button .icon:first-child {
     margin-right: 0 !important;
     margin-left: 0 !important; } }
 @media screen and (max-width: 1087px) {
@@ -560,7 +565,7 @@ footer {
 
   .is-products .button .text {
     display: block; }
-  .is-products .button .icon:first-child:not(:last-child) {
+  .is-products .button .icon:first-child {
     margin-right: .5rem !important; }
 
   .wrapper-container {

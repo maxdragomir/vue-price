@@ -7,7 +7,7 @@
       .text {
         display: none;
       }
-      .icon:first-child:not(:last-child) {
+      .icon:first-child {
         margin-right: 0 !important;
         margin-left: 0 !important;
       }
@@ -47,7 +47,7 @@
       .text {
         display: block;
       }
-      .icon:first-child:not(:last-child) {
+      .icon:first-child {
         margin-right: .5rem !important;
       }
     }

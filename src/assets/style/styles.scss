@@ -493,11 +493,18 @@ footer {
     width: 100%;
   }
   .modal_left{
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1 1 50%;
     position: relative;
     margin: 20px;
     border-radius: 8px;
+
+    & > div {
+      position: relative;
+      width: 100%;
+    }
     .fa{
       font-size: 1.5rem;
       color: $whitish;
