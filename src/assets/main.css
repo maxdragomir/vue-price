@@ -430,10 +430,10 @@ footer {
     .product-info {
       width: 100%; } }
   .product-info .modal_left {
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     flex: 1 1 50%;
     position: relative;
+    margin: 20px;
     border-radius: 8px; }
     .product-info .modal_left .fa {
       font-size: 1.5rem;
@@ -443,9 +443,9 @@ footer {
     .product-info .modal_left .fa:hover {
       color: #e89223; }
     .product-info .modal_left .left {
-      left: 20px; }
+      left: 0; }
     .product-info .modal_left .right {
-      right: 20px; }
+      right: 0; }
     .product-info .modal_left img {
       max-width: 100%;
       max-height: 300px; }
@@ -520,9 +520,10 @@ footer {
       padding-bottom: 65% !important; } }
 
 .vueperslides__arrow {
-  top: 2rem !important; }
+  top: 0 !important; }
 
 .vueperslides__bullet {
+  margin: 1em .6em 0 !important;
   box-shadow: none !important;
   border-color: #a8a7a7 !important; }
 

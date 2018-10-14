@@ -12,7 +12,7 @@
                                     <!--<img :src="data.product.mainPhoto">-->
                                     <img v-if="data.product.photos.length === 1" v-bind:src="data.product.photos[0]">
                                     <div v-else>
-                                        <vueper-slides class="no-shadow" autoplay :dragging-distance="70">
+                                        <vueper-slides class="no-shadow" autoplay :dragging-distance="70" :bullets-outside="true">
                                             <v-icon slot="arrowLeft" color="white" large><i class="fa fa-arrow-left left" aria-hidden="true"></i></v-icon>
                                             <v-icon slot="arrowRight" color="white" large><i class="fa fa-arrow-right right" aria-hidden="true"></i></v-icon>
                                             <vueper-slide v-for="(photo, i) in data.product.photos" :key="i" :image="photo"></vueper-slide>
@@ -27,7 +27,7 @@
 
                                     <div class="modal_content">
                                         <div class="modal_row" v-for="price in data.product.prices" v-bind:key="price.shop.name">
-                                            <div class="name novus">{{price.shop.name}}</div>
+                                            <div class="name">{{price.shop.name}}</div>
                                             <div class="price">{{price.price}} грн</div>
                                         </div>
                                     </div>
@@ -37,12 +37,12 @@
                                             <span class="icon is-small">
                                                 <i class="fa fa-chart-line"></i>
                                             </span>
+                                            <span class="text">Statistics</span>
                                         </a>
                                         <a href="javascript:;" class="button is-custom" title="Add to cart">
                                             <span class="icon is-small">
                                                 <i class="fa fa-cart-plus"></i>
                                             </span>
-                                            <span class="text">Add to cart</span>
                                         </a>
                                     </div>
                                 </div>

@@ -493,16 +493,11 @@ footer {
     width: 100%;
   }
   .modal_left{
-    //display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     flex: 1 1 50%;
     position: relative;
-    //margin: 0 20px;
+    margin: 20px;
     border-radius: 8px;
-    @media(max-width: 768px){
-      //margin: 20px;
-    }
     .fa{
       font-size: 1.5rem;
       color: $whitish;
@@ -511,10 +506,10 @@ footer {
     }
     .fa:hover { color: $orange; }
     .left{
-      left: 20px;
+      left: 0;
     }
     .right{
-      right: 20px;
+      right: 0;
     }
     img{
       max-width: 100%;
@@ -536,19 +531,6 @@ footer {
     padding: 40px;
     background: $white_25;
     border-radius: 8px;
-    //box-shadow: -2px 0px 4px 0 rgba(70, 56, 83, 0.05);
-    //border-left: 1px solid rgba($orange, .2);
-
-    //&:after {
-    //  content: '';
-    //  position: absolute;
-    //  top: 50%;
-    //  left: 0;
-    //  width: 1px;
-    //  height: 80%;
-    //  background: rgba($orange, .5);
-    //  transform: translateY(-50%);
-    //}
 
     .modal_header {
       margin-bottom: 10px;
@@ -628,9 +610,10 @@ footer {
   }
 }
 .vueperslides__arrow {
-  top:  2rem !important;
+  top: 0 !important;
 }
 .vueperslides__bullet {
+  margin: 1em .6em 0 !important;
   box-shadow: none !important;
   border-color: #a8a7a7 !important;
 }
