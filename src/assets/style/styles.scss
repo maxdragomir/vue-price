@@ -572,7 +572,14 @@ footer {
         }
 
         .name {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
           font-weight: 800;
+
+          img {
+            max-width: 100px;
+          }
         }
         .price {
           text-transform: uppercase;

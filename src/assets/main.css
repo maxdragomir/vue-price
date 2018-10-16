@@ -489,7 +489,12 @@ footer {
       .product-info .modal_right .modal_content .modal_row:last-child {
         border-bottom: 0; }
       .product-info .modal_right .modal_content .modal_row .name {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         font-weight: 800; }
+        .product-info .modal_right .modal_content .modal_row .name img {
+          max-width: 100px; }
       .product-info .modal_right .modal_content .modal_row .price {
         text-transform: uppercase; }
     .product-info .modal_right .modal_footer {

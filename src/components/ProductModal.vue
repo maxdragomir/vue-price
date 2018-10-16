@@ -26,8 +26,8 @@
                                     </div>
 
                                     <div class="modal_content">
-                                        <div class="modal_row" v-for="price in data.product.prices" v-bind:key="price.shop.name">
-                                            <div class="name">{{price.shop.name}}</div>
+                                        <div class="modal_row" v-for="price in data.product.prices" v-bind:key="price.shop.photo">
+                                            <div class="name"><img :src="price.shop.photo" alt=""></div>
                                             <div class="price">{{price.price}} грн</div>
                                         </div>
                                     </div>
